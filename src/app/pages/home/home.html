@@ -1,0 +1,36 @@
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Look up any Pokemon, then tell us what you think of the app.</h1>
+    <p class="lede">
+      Poke Finder is a small project - half Pokedex, half feedback box. It
+      pulls real data from PokeAPI, so the Pokedex page pages through all
+      1300+ Pokemon instead of faking a handful.
+    </p>
+    <div class="hero-actions">
+      <a routerLink="/pokedex" class="btn btn-primary">Open the Pokedex</a>
+      <a routerLink="/feedback" class="btn btn-ghost">Leave feedback</a>
+    </div>
+  </div>
+</section>
+
+<section class="details">
+  <div class="detail-card">
+    <h2>Why this exists</h2>
+    <p>
+      I wanted a small, honest example of an Angular app that actually talks
+      to something outside itself - no mock JSON, no lorem ipsum. The
+      Pokedex page hits a live public API with real pagination, and the
+      feedback form is a real reactive form with validation, not just a
+      wall of inputs.
+    </p>
+  </div>
+
+  <div class="detail-card">
+    <h2>What's under the hood</h2>
+    <ul>
+      <li>Angular Router for the three pages you can see in the nav bar</li>
+      <li>A <code>PokeCatalog</code> service wrapping <code>HttpClient</code></li>
+      <li>A reactive form on the Feedback page with live validation messages</li>
+    </ul>
+  </div>
+</section>

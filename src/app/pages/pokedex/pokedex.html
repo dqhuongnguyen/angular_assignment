@@ -1,0 +1,55 @@
+<section class="pokedex-page">
+  <header class="page-head">
+    <h1>Pokedex</h1>
+    <p>Browse all {{ total() || '1300+' }} Pokemon, or look one up by name.</p>
+  </header>
+
+  <form class="search-bar" (ngSubmit)="onSearch()">
+    <input
+      type="text"
+      name="searchTerm"
+      [(ngModel)]="searchTerm"
+      placeholder="Search by exact name, e.g. 'pikachu'"
+      autocomplete="off"
+    />
+    <button type="submit" [disabled]="loading()">Search</button>
+    @if (isSearching) {
+      <button type="button" class="clear-btn" (click)="backToBrowsing()">Back to browsing</button>
+    }
+  </form>
+
+  @if (loading()) {
+    <p class="status">Loading...</p>
+  }
+
+  @if (errorMessage()) {
+    <p class="status error">{{ errorMessage() }}</p>
+  }
+
+  @if (!loading() && pokemon().length > 0) {
+    <div class="poke-grid">
+      @for (p of pokemon(); track p.id) {
+        <article class="poke-card">
+          <span class="poke-number">#{{ p.id.toString().padStart(3, '0') }}</span>
+          <img [src]="p.spriteUrl" [alt]="p.name" loading="lazy" />
+          <h3>{{ p.name }}</h3>
+          @if (p.types?.length) {
+            <div class="type-row">
+              @for (t of p.types; track t) {
+                <span class="type-badge" [attr.data-type]="t">{{ t }}</span>
+              }
+            </div>
+          }
+        </article>
+      }
+    </div>
+  }
+
+  @if (!isSearching && !loading() && pokemon().length > 0) {
+    <div class="pagination">
+      <button (click)="previousPage()" [disabled]="!hasPrevious">← Previous</button>
+      <span>Page {{ pageNumber }} of {{ pageCount }}</span>
+      <button (click)="nextPage()" [disabled]="!hasNext">Next →</button>
+    </div>
+  }
+</section>

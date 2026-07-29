@@ -1,0 +1,152 @@
+.pokedex-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+.page-head {
+  margin-bottom: 24px;
+
+  h1 {
+    margin: 0 0 6px;
+    color: #cc0a2b;
+  }
+
+  p {
+    color: #6b6b6b;
+    margin: 0;
+  }
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+
+  input {
+    flex: 1;
+    min-width: 200px;
+    padding: 11px 14px;
+    border: 1.5px solid #d8d2c4;
+    border-radius: 8px;
+    font-size: 15px;
+
+    &:focus {
+      outline: none;
+      border-color: #cc0a2b;
+    }
+  }
+
+  button {
+    padding: 0 22px;
+    background: #cc0a2b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: default;
+    }
+  }
+
+  .clear-btn {
+    background: transparent;
+    color: #cc0a2b;
+    border: 1.5px solid #cc0a2b;
+  }
+}
+
+.status {
+  color: #6b6b6b;
+  font-size: 14px;
+
+  &.error {
+    color: #a3462f;
+  }
+}
+
+.poke-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.poke-card {
+  background: #fff;
+  border: 1px solid #eee2cc;
+  border-radius: 10px;
+  padding: 14px 10px;
+  text-align: center;
+  position: relative;
+
+  img {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+
+  h3 {
+    font-size: 14px;
+    margin: 6px 0 4px;
+    color: #2b2b2b;
+    text-transform: capitalize;
+  }
+}
+
+.poke-number {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-size: 11px;
+  color: #9a9a9a;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.type-row {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.type-badge {
+  font-size: 10.5px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  background: #e0ddd3;
+  color: #4a4a4a;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  button {
+    padding: 8px 16px;
+    background: #1f2d24;
+    color: #f4ede1;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+  }
+
+  span {
+    font-size: 13.5px;
+    color: #6b6b6b;
+  }
+}

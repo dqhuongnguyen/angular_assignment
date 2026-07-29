@@ -1,0 +1,32 @@
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" routerLink="/" (click)="closeMenu()">
+      <span class="brand-mark">PF</span>
+      Poke Finder
+    </a>
+
+    <button class="menu-toggle" type="button" (click)="toggleMenu()" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" [class.open]="menuOpen">
+      <li>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+          Home
+        </a>
+      </li>
+      <li>
+        <a routerLink="/pokedex" routerLinkActive="active" (click)="closeMenu()">
+          Pokedex
+        </a>
+      </li>
+      <li>
+        <a routerLink="/feedback" routerLinkActive="active" (click)="closeMenu()">
+          Feedback
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

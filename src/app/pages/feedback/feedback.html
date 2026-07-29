@@ -1,0 +1,77 @@
+<section class="feedback-page">
+  <header class="page-head">
+    <h1>Trainer feedback</h1>
+    <p>Three required fields, one optional one. No trainer card needed.</p>
+  </header>
+
+  @if (submitted()) {
+    <div class="thanks">
+      <h2>Thanks - that's noted.</h2>
+      <p>Your feedback was submitted successfully.</p>
+      <button type="button" class="btn-link" (click)="giveAnotherAnswer()">
+        Submit another response
+      </button>
+    </div>
+  } @else {
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="feedback-form" novalidate>
+      <div class="field">
+        <label for="name">Trainer name</label>
+        <input id="name" type="text" formControlName="name" placeholder="Ash Ketchum" />
+        @if (name?.invalid && name?.touched) {
+          <p class="field-error">
+            @if (name?.hasError('required')) {
+              Please tell us your name.
+            } @else if (name?.hasError('minlength')) {
+              That name is a little too short.
+            }
+          </p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" placeholder="ash@pallettown.example" />
+        @if (email?.invalid && email?.touched) {
+          <p class="field-error">
+            @if (email?.hasError('required')) {
+              An email address is required.
+            } @else if (email?.hasError('email')) {
+              That doesn't look like a valid email.
+            }
+          </p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="rating">How was your experience with the Pokedex?</label>
+        <select id="rating" formControlName="rating">
+          <option value="" disabled>Choose one</option>
+          <option value="5">Excellent</option>
+          <option value="4">Good</option>
+          <option value="3">Okay</option>
+          <option value="2">Not great</option>
+          <option value="1">Poor</option>
+        </select>
+        @if (rating?.invalid && rating?.touched) {
+          <p class="field-error">Please pick a rating.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="comments">Anything else? (optional)</label>
+        <textarea
+          id="comments"
+          formControlName="comments"
+          rows="4"
+          maxlength="500"
+          placeholder="A Pokemon you wish was easier to find, a feature you'd want, anything..."
+        ></textarea>
+        @if (comments?.hasError('maxlength')) {
+          <p class="field-error">Let's keep it under 500 characters.</p>
+        }
+      </div>
+
+      <button type="submit" class="submit-btn">Send feedback</button>
+    </form>
+  }
+</section>
