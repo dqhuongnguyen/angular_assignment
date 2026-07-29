@@ -47,9 +47,9 @@
 
   @if (!isSearching && !loading() && pokemon().length > 0) {
     <div class="pagination">
-      <button (click)="previousPage()" [disabled]="!hasPrevious">← Previous</button>
+      <button (click)="previousPage()" [disabled]="!hasPrevious">Previous</button>
       <span>Page {{ pageNumber }} of {{ pageCount }}</span>
-      <button (click)="nextPage()" [disabled]="!hasNext">Next →</button>
+      <button (click)="nextPage()" [disabled]="!hasNext">Next</button>
     </div>
   }
 </section>

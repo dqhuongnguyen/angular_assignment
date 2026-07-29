@@ -12,8 +12,6 @@ export class Feedback {
 
   submitted = signal(false);
 
-  // Kept the field list short on purpose - name, email, a rating, and an
-  // optional comment. Anything longer starts to feel like a job application.
   form = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.email]],
@@ -43,9 +41,6 @@ export class Feedback {
       return;
     }
 
-    // There's no backend behind this yet - the point of this page is the
-    // form and its validation, not a database. Logging it is enough to
-    // prove the values actually made it out of the form.
     console.log('Feedback submitted:', this.form.value);
 
     this.submitted.set(true);

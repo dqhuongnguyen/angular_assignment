@@ -11,8 +11,7 @@ const SPRITE_BASE = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sp
 export class PokeCatalog {
   private http = inject(HttpClient);
 
-  // Real offset/limit pagination straight from the API - there are over
-  // 1300 entries, so "page 1 of ~109" is a real, honest number here.
+  // Real offset/limit pagination straight from the API
   getPage(offset: number, limit: number): Observable<{ pokemon: PokemonCard[]; total: number }> {
     return this.http
       .get<PokeApiListResponse>(`${API_BASE}/pokemon`, {
@@ -26,10 +25,7 @@ export class PokeCatalog {
       );
   }
 
-  // Single-name lookup for the search box. PokeAPI doesn't do fuzzy or
-  // partial matching, so this only works for an exact (case-insensitive)
-  // name - "pikachu" works, "pika" won't, and that's worth explaining to
-  // the user in the UI rather than pretending it's a full search engine.
+  // Single-name lookup for the search box, only exact matching works
   findByName(name: string): Observable<PokemonCard> {
     const slug = name.trim().toLowerCase();
     return this.http.get<PokeApiDetail>(`${API_BASE}/pokemon/${slug}`).pipe(

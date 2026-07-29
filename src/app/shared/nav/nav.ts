@@ -8,8 +8,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './nav.scss',
 })
 export class Nav {
-  // Kept small on purpose - three links, nothing fancy. A mobile
-  // hamburger menu would be the obvious next step if this grew.
   menuOpen = false;
 
   toggleMenu(): void {
